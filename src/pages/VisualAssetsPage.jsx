@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../component/layout/Layout";
-import Charts from "../component/VisualAssetsPage/Charts";
+import Table from "../component/VisualAssetsPage/Table";
 import Graphs from "../component/VisualAssetsPage/Graphs";
 import Calendar from "../component/VisualAssetsPage/Calendar";
 import Video from "../component/VisualAssetsPage/Video";
@@ -9,8 +9,8 @@ import { useLocation } from "react-router-dom";
 
 function renderComponent(slug) {
   switch (slug) {
-    case "/charts":
-      return <Charts />;
+    case "/table":
+      return <Table />;
     case "/graphs":
       return <Graphs />;
     case "/calendar":

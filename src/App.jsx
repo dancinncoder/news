@@ -8,7 +8,7 @@ import { SlugContext } from "./context/SlugContext";
 function App() {
   const actionNavItemList = [
     { label: "Home", slug: "/" },
-    { label: "Charts", slug: "/charts" },
+    { label: "Table", slug: "/table" },
     { label: "Graphs", slug: "/graphs" },
     { label: "Calendar", slug: "/calendar" },
     { label: "Video", slug: "/video" },
