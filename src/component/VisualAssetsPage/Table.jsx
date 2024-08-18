@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TableData from "../../mock-data/TableData.json";
 
 const TableContainer = styled.div`
-  width: 100%;
+  /* width: 100%; */
   max-width: 600px;
   margin: 0 auto;
   padding: 30px 10px;
