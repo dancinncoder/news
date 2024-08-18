@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { SlugContext } from "../../context/SlugContext";
 
 const ActionNavContainer = styled.div`
   background-color: var(--red);
@@ -79,19 +80,24 @@ const NavContainer = styled.div`
 
 const NavInnerContainer = styled.div`
   width: 100%;
-  min-height: 38px;
+  min-height: 32px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  @media (min-width: 600px) {
+    min-height: 38px;
+  }
 `;
 
-const CategoryTitle = styled.p`
+const CategoryTitle = styled(Link)`
   font-family: Helvetica;
   font-size: 36px;
   font-weight: 700;
   line-height: 22px;
   color: var(--white);
   text-transform: uppercase;
+  text-decoration: none;
 `;
 
 const NavListContainer = styled.div``;
@@ -115,7 +121,7 @@ const NavList = styled.ul`
 const NavItem = styled.li`
   color: var(--white);
   font-family: Helvetica;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 15px;
   list-style: none;
@@ -124,7 +130,7 @@ const NavItem = styled.li`
   border-right: 0.2px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
 
-  @media (min-width: 510px) {
+  @media (min-width: 600px) {
     font-size: 16px;
     line-height: 18px;
   }
@@ -137,7 +143,11 @@ const NavLink = styled.a`
   list-style: none;
   text-decoration: none;
   color: var(--white);
-  padding: 2px 11.4px;
+  padding: 2px 6.4px;
+
+  @media (min-width: 600px) {
+    padding: 2px 11.4px;
+  }
 `;
 
 const HoverBar = styled.div`
@@ -151,17 +161,8 @@ const HoverBar = styled.div`
 function ActionNav() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { slugList } = useContext(SlugContext);
   const [activatedSlug, setActivatedSlug] = useState(location.pathname);
-
-  const actionNavItemList = [
-    { label: "Home", slug: "/" },
-    { label: "Charts", slug: "/charts" },
-    { label: "Graphs", slug: "/graphs" },
-    { label: "Calendar", slug: "/calendar" },
-    { label: "Video", slug: "/video" },
-    { label: "Poll", slug: "/poll" },
-    { label: "3D Assets", slug: "/3d-assets" },
-  ];
 
   useEffect(() => {
     setActivatedSlug(location.pathname);
@@ -172,7 +173,7 @@ function ActionNav() {
       <TopContainer>
         <LogoContainer>
           <LogoInnerContainer>
-            <CategoryTitle>news</CategoryTitle>
+            <CategoryTitle to={"/"}>news</CategoryTitle>
           </LogoInnerContainer>
         </LogoContainer>
       </TopContainer>
@@ -181,7 +182,7 @@ function ActionNav() {
           <NavInnerContainer>
             <NavListContainer>
               <NavList>
-                {actionNavItemList.map((nav) => (
+                {slugList.map((nav) => (
                   <NavItem key={nav.slug}>
                     <NavLink
                       onClick={() => {

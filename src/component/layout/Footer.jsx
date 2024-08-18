@@ -29,7 +29,12 @@ const FooterInnerContainer = styled.div`
 function Footer() {
   return (
     <FooterContainer>
-      <FooterInnerContainer>Footer</FooterInnerContainer>
+      <FooterInnerContainer>
+        <p>
+          © 2024 BBC. The BBC is not responsible for the content of external
+          sites. Read about our approach to external linking.
+        </p>
+      </FooterInnerContainer>
     </FooterContainer>
   );
 }
