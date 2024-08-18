@@ -7,6 +7,7 @@ export const getArticle = async () => {
     const response = await axios.get(
       `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}`
     );
+
     return response;
   } catch (error) {
     console.error("Error fetching article data:", error);

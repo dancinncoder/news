@@ -3,27 +3,40 @@ import { Link } from "react-router-dom";
 import { ArticleContext } from "../../context/ArticleContext";
 import { useContext } from "react";
 import getHourDiff from "../../util/getHourDiff";
+import ArticleDefaultImage from "../../assets/images/article-default.jpg";
 
 const FeaturedArticleListContainer = styled.div`
   width: 100%;
-  max-width: 976px;
+  max-width: 1008px;
   margin: 0 auto;
 
   @media (min-width: 1280px) {
-    max-width: 1248px;
+    max-width: 1280px;
   }
 `;
 
 const ArticleList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto auto;
   gap: 1rem;
-  padding: 16px 0;
+  padding: 16px;
   margin: 0;
   /* border: 1px solid black; */
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 
 const ListLink = styled(Link)`
@@ -99,6 +112,8 @@ const Hour = styled.span`
 function FeaturedArticleList() {
   const { articleList } = useContext(ArticleContext);
 
+  console.log("data:", articleList);
+
   return (
     <FeaturedArticleListContainer>
       <ArticleList>
@@ -120,7 +135,7 @@ function FeaturedArticleList() {
             >
               <List>
                 <ListThumbnail
-                  src={imgSrc}
+                  src={imgSrc ? imgSrc : ArticleDefaultImage}
                   alt={thumbnail?.subtype || "Article Image"}
                   $isFirst={isFirst}
                 />
