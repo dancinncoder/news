@@ -1,21 +1,35 @@
-import { styled } from "styled-components";
+import { useEffect, useState } from "react";
 import "./App.css";
-import Nav from "./component/layout/Nav";
+import { getArticle } from "./api/ArticleApi";
+import { ArticleContext } from "./context/ArticleContext";
+import AppRouter from "./shared/Router";
 
 function App() {
+  const [articleList, setArticleList] = useState([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const cachedArticles = localStorage.getItem("articles");
+
+      if (cachedArticles) {
+        setArticleList(JSON.parse(cachedArticles));
+      } else {
+        try {
+          const response = await getArticle();
+          setArticleList(response?.data?.response?.docs);
+        } catch (error) {
+          console.error("Error fetching articles:", error);
+        }
+      }
+    };
+    fetchArticles();
+  }, []);
+
   return (
-    <div className="App">
-      <StHeader>
-        <Nav />
-      </StHeader>
-    </div>
+    <ArticleContext.Provider value={{ articleList, setArticleList }}>
+      <AppRouter articleList={articleList} setArticleList={setArticleList} />
+    </ArticleContext.Provider>
   );
 }
 
 export default App;
-
-const StHeader = styled.header`
-  background-color: yellow;
-  width: 100%;
-  height: 100px;
-`;
