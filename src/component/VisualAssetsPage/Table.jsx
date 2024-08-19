@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import TableData from "../../mock-data/TableData.json";
+import TableCoffeeData from "../../mock-data/TableDataCoffee.json";
 
 const TableContainer = styled.div`
-  /* width: 100%; */
   max-width: 600px;
   margin: 0 auto;
   padding: 30px 10px;
@@ -11,7 +11,6 @@ const TableContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid red; */
   gap: 20px;
 
   @media (min-width: 600px) {
@@ -60,8 +59,19 @@ const Cell = styled.div`
   }
 `;
 
+const Comment = styled.p`
+  text-align: right;
+  width: 100%;
+  font-size: 10px;
+  color: var(gray);
+`;
+
 function Table() {
   const tableDataList = TableData;
+  const tableCoffeeDataList = TableCoffeeData;
+
+  // Function to remove 'million bags' from the data
+  const cleanData = (value) => value.replace(" million bags", "");
 
   return (
     <TableContainer>
@@ -70,11 +80,7 @@ function Table() {
           How average annual rents for a student room have risen in 5 British
           cities and towns
         </h1>
-        <TableGrid
-          columnsCount={2} // 1 for "City" + number of years
-          rowsCount={tableDataList.length} // Number of cities
-        >
-          {/* Header row: Years */}
+        <TableGrid columnsCount={2} rowsCount={tableDataList.length}>
           <Cell header>City</Cell>
           {Object.keys(tableDataList[0])
             .filter((key) => key !== "city")
@@ -83,11 +89,9 @@ function Table() {
                 {year.replace("year", "Year ")}
               </Cell>
             ))}
-
-          {/* Data rows */}
           {tableDataList.map((data, rowIndex) => (
-            <>
-              <Cell key={`city-${rowIndex}`} header={true}>
+            <React.Fragment key={`row-${rowIndex}`}>
+              <Cell key={`city-${rowIndex}`} header>
                 {data.city}
               </Cell>
               {Object.keys(data)
@@ -95,41 +99,36 @@ function Table() {
                 .map((key, colIndex) => (
                   <Cell key={`data-${rowIndex}-${colIndex}`}>{data[key]}</Cell>
                 ))}
-            </>
+            </React.Fragment>
           ))}
         </TableGrid>
       </InnerContainer>
+
       <InnerContainer>
-        <h1>
-          How average annual rents for a student room have risen in 5 British
-          cities and towns
-        </h1>
-        <TableGrid
-          columnsCount={2} // 1 for "City" + number of years
-          rowsCount={tableDataList.length} // Number of cities
-        >
-          {/* Header row: Years */}
-          <Cell header>City</Cell>
-          {Object.keys(tableDataList[0])
-            .filter((key) => key !== "city")
+        <h1>{tableCoffeeDataList.tableName}</h1>
+        <Comment>** million bags</Comment>
+        <TableGrid columnsCount={4} rowsCount={tableCoffeeDataList.data.length}>
+          <Cell header>Country</Cell>
+          {Object.keys(tableCoffeeDataList.data[0])
+            .filter((key) => key !== "country")
             .map((year, index) => (
               <Cell key={`header-${index}`} header>
-                {year.replace("year", "Year ")}
+                {year.replace("year_", "Year ")}
               </Cell>
             ))}
-
-          {/* Data rows */}
-          {tableDataList.map((data, rowIndex) => (
-            <>
-              <Cell key={`city-${rowIndex}`} header={true}>
-                {data.city}
+          {tableCoffeeDataList.data.map((data, rowIndex) => (
+            <React.Fragment key={`row-${rowIndex}`}>
+              <Cell key={`country-${rowIndex}`} header>
+                {data.country}
               </Cell>
               {Object.keys(data)
-                .filter((key) => key !== "city")
+                .filter((key) => key !== "country")
                 .map((key, colIndex) => (
-                  <Cell key={`data-${rowIndex}-${colIndex}`}>{data[key]}</Cell>
+                  <Cell key={`data-${rowIndex}-${colIndex}`}>
+                    {cleanData(data[key])}
+                  </Cell>
                 ))}
-            </>
+            </React.Fragment>
           ))}
         </TableGrid>
       </InnerContainer>

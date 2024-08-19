@@ -1,0 +1,40 @@
+{
+  "tableName": "Global Coffee Consumption by Country (2018-2021)",
+  "data": [
+    {
+      "country": "Brazil",
+      "year_2018": "21 million bags",
+      "year_2019": "22 million bags",
+      "year_2020": "23 million bags",
+      "year_2021": "24 million bags"
+    },
+    {
+      "country": "United States",
+      "year_2018": "25 million bags",
+      "year_2019": "26 million bags",
+      "year_2020": "27 million bags",
+      "year_2021": "28 million bags"
+    },
+    {
+      "country": "Germany",
+      "year_2018": "9 million bags",
+      "year_2019": "9.5 million bags",
+      "year_2020": "10 million bags",
+      "year_2021": "10.5 million bags"
+    },
+    {
+      "country": "Japan",
+      "year_2018": "8 million bags",
+      "year_2019": "8.2 million bags",
+      "year_2020": "8.4 million bags",
+      "year_2021": "8.6 million bags"
+    },
+    {
+      "country": "France",
+      "year_2018": "6 million bags",
+      "year_2019": "6.2 million bags",
+      "year_2020": "6.4 million bags",
+      "year_2021": "6.6 million bags"
+    }
+  ]
+}
