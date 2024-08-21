@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../component/layout/Layout";
 import Table from "../component/VisualAssetsPage/Table";
-import Graphs from "../component/VisualAssetsPage/Graphs";
 import Calendar from "../component/VisualAssetsPage/Calendar";
 import Video from "../component/VisualAssetsPage/Video";
 import ThreeDAssets from "../component/VisualAssetsPage/ThreeDAssets";
 import { useLocation } from "react-router-dom";
+import Charts from "../component/VisualAssetsPage/Charts";
 
 function renderComponent(slug) {
   switch (slug) {
     case "/table":
       return <Table />;
-    case "/graphs":
-      return <Graphs />;
+    case "/charts":
+      return <Charts />;
     case "/calendar":
       return <Calendar />;
     case "/video":

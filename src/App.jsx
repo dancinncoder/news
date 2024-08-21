@@ -9,7 +9,7 @@ function App() {
   const actionNavItemList = [
     { label: "Home", slug: "/" },
     { label: "Table", slug: "/table" },
-    { label: "Graphs", slug: "/graphs" },
+    { label: "Charts", slug: "/charts" },
     { label: "Calendar", slug: "/calendar" },
     { label: "Video", slug: "/video" },
     { label: "3D Assets", slug: "/3d-assets" },
