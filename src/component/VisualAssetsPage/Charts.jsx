@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import LineChart from "./charts/LineChart";
+import BarChart from "./charts/BarChart";
 
-const GraphsContainer = styled.div`
+const ChartContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 30px 10px;
@@ -30,11 +31,24 @@ const GraphsContainer = styled.div`
   }
 `;
 
+const ChartInnerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
+`;
 function Charts() {
   return (
-    <GraphsContainer>
-      <LineChart />
-    </GraphsContainer>
+    <ChartContainer>
+      <ChartInnerContainer>
+        <LineChart />
+        <BarChart />
+      </ChartInnerContainer>
+    </ChartContainer>
   );
 }
 

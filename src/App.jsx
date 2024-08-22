@@ -8,11 +8,11 @@ import { SlugContext } from "./context/SlugContext";
 function App() {
   const actionNavItemList = [
     { label: "Home", slug: "/" },
-    { label: "Table", slug: "/table" },
     { label: "Charts", slug: "/charts" },
-    { label: "Calendar", slug: "/calendar" },
-    { label: "Video", slug: "/video" },
-    { label: "3D Assets", slug: "/3d-assets" },
+    { label: "Interactive Assets", slug: "/interactive-assets" },
+    { label: "Table", slug: "/table" },
+    // { label: "Video", slug: "/video" },
+    // { label: "3D Assets", slug: "/3d-assets" },
   ];
 
   const [articleList, setArticleList] = useState([]);
