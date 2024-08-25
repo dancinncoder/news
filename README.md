@@ -1,6 +1,18 @@
 # News
 
-### Convention
+A media website showcasing data visualization assets inspired by the BBC News website.
+
+### Demo
+
+https://news-blush-kappa.vercel.app/
+
+### Tech Stack
+
+JavaScript
+React.js
+React-Router-Dom
+Apexcharts
+Vercel
 
 ### Breakpoints
 
@@ -10,7 +22,5 @@
 
 ### Visual assets to show
 
-- charts
-- before/after image module
-- dynamic calendar (tabable/clickable)
-- video
+- Charts
+- Interactive Assets
