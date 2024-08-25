@@ -4,6 +4,12 @@ import styled from "styled-components";
 
 const InnerContainer = styled.div`
   width: 100%;
+  margin: 10px 0;
+
+  @media (min-width: 600px) {
+    width: 50%;
+    margin: 20px 0;
+  }
 `;
 
 function LineChart() {

@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import LineChart from "./charts/LineChart";
 import BarChart from "./charts/BarChart";
+import ColumnChart from "./charts/ColumnChart";
+import PyramidChart from "./charts/PyramidChart";
+import DonutChart from "./charts/DonutChart";
+import CandleStickChart from "./charts/CandleStickChart";
+import RadarChart from "./charts/RadarChart";
+import TreemapChart from "./charts/TreemapChart";
 
 const ChartContainer = styled.div`
   max-width: 600px;
@@ -9,6 +15,7 @@ const ChartContainer = styled.div`
   padding: 30px 10px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -39,6 +46,7 @@ const ChartInnerContainer = styled.div`
 
   @media (min-width: 600px) {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 function Charts() {
@@ -47,6 +55,12 @@ function Charts() {
       <ChartInnerContainer>
         <LineChart />
         <BarChart />
+        <ColumnChart />
+        <PyramidChart />
+        <DonutChart />
+        <CandleStickChart />
+        <RadarChart />
+        <TreemapChart />
       </ChartInnerContainer>
     </ChartContainer>
   );

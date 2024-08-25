@@ -12,44 +12,36 @@ const InnerContainer = styled.div`
   }
 `;
 
-function BarChart() {
+function DonutChart() {
   const chartOptions = {
     chart: {
-      height: 300,
-      type: "bar",
-      toolbar: { show: false },
-      background: "transparent",
+      width: 380,
+      type: "donut",
     },
+    labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+    colors: ["#754835", "#ffa407", "#ec5454", "#2d62ff", "#2a7e31"],
     plotOptions: {
-      bar: {
-        horizontal: true,
-        distributed: true,
+      pie: {
+        donut: {
+          size: "55%",
+        },
       },
     },
-    xaxis: {
-      categories: ["Amazon", "Apple", "Google", "Microsoft"],
-    },
-    colors: ["#009f2a", "#247BA0", "#f0e809", "#ea4444"],
   };
 
-  const chartSeries = [
-    {
-      name: "Series 1",
-      data: [20, 58, 73, 41],
-    },
-  ];
+  const chartSeries = [40, 10, 31, 19, 15];
 
   return (
     <InnerContainer>
-      <p>2. Bar Chart</p>
+      <p>5. Donut Chart</p>
       <Chart
         options={chartOptions}
         series={chartSeries}
-        type="bar"
+        type="donut"
         height={300}
       />
     </InnerContainer>
   );
 }
 
-export default BarChart;
+export default DonutChart;

@@ -12,44 +12,45 @@ const InnerContainer = styled.div`
   }
 `;
 
-function BarChart() {
+function RadarChart() {
   const chartOptions = {
     chart: {
-      height: 300,
-      type: "bar",
-      toolbar: { show: false },
-      background: "transparent",
+      width: 380,
+      type: "radar",
     },
-    plotOptions: {
-      bar: {
-        horizontal: true,
-        distributed: true,
-      },
+    yaxis: {
+      stepSize: 20,
     },
     xaxis: {
-      categories: ["Amazon", "Apple", "Google", "Microsoft"],
+      categories: [
+        "Accuracy",
+        "Timeliness",
+        "Relevance",
+        "Depth",
+        "Bias",
+        "Readability",
+      ],
     },
-    colors: ["#009f2a", "#247BA0", "#f0e809", "#ea4444"],
   };
 
   const chartSeries = [
     {
-      name: "Series 1",
-      data: [20, 58, 73, 41],
+      name: "Metric",
+      data: [40, 60, 80, 70, 25, 55],
     },
   ];
 
   return (
     <InnerContainer>
-      <p>2. Bar Chart</p>
+      <p>7. Radar Chart</p>
       <Chart
         options={chartOptions}
         series={chartSeries}
-        type="bar"
+        type="radar"
         height={300}
       />
     </InnerContainer>
   );
 }
 
-export default BarChart;
+export default RadarChart;

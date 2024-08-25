@@ -10,7 +10,7 @@ function App() {
     { label: "Home", slug: "/" },
     { label: "Charts", slug: "/charts" },
     { label: "Interactive Assets", slug: "/interactive-assets" },
-    { label: "Table", slug: "/table" },
+    // { label: "Table", slug: "/table" },
     // { label: "Video", slug: "/video" },
     // { label: "3D Assets", slug: "/3d-assets" },
   ];
