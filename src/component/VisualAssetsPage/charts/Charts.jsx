@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import LineChart from "./charts/LineChart";
-import BarChart from "./charts/BarChart";
-import ColumnChart from "./charts/ColumnChart";
-import PyramidChart from "./charts/PyramidChart";
-import DonutChart from "./charts/DonutChart";
-import CandleStickChart from "./charts/CandleStickChart";
-import RadarChart from "./charts/RadarChart";
-import TreemapChart from "./charts/TreemapChart";
+import LineChart from "./LineChart";
+import BarChart from "./BarChart";
+import ColumnChart from "./ColumnChart";
+import PyramidChart from "./PyramidChart";
+import DonutChart from "./DonutChart";
+import CandleStickChart from "./CandleStickChart";
+import RadarChart from "./RadarChart";
+import TreemapChart from "./TreemapChart";
 
 const ChartContainer = styled.div`
   max-width: 600px;

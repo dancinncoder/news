@@ -3,9 +3,9 @@ import Layout from "../component/layout/Layout";
 import Table from "../component/VisualAssetsPage/Table";
 import Calendar from "../component/VisualAssetsPage/Calendar";
 import Video from "../component/VisualAssetsPage/Video";
-import ThreeDAssets from "../component/VisualAssetsPage/ThreeDAssets";
 import { useLocation } from "react-router-dom";
-import Charts from "../component/VisualAssetsPage/Charts";
+import Charts from "../component/VisualAssetsPage/charts/Charts";
+import InteractiveAssets from "../component/VisualAssetsPage/interactive-assets/InteractiveAssets";
 
 function renderComponent(slug) {
   switch (slug) {
@@ -17,8 +17,8 @@ function renderComponent(slug) {
       return <Calendar />;
     case "/video":
       return <Video />;
-    case "/3d-assets":
-      return <ThreeDAssets />;
+    case "/interactive-assets":
+      return <InteractiveAssets />;
     default:
       return null;
   }

@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./style/GlobalStyle";
 import theme from "./style/theme";
+// import SimpleMapsComponent from "./SimpleMapsComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
