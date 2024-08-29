@@ -61,11 +61,19 @@ const stateAbbreviations = {
 const ElectionContainer = styled.div`
   border: 1px solid blue;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 700px;
 `;
 
 const InnerContainer = styled.div`
   border: 1px solid red;
-  max-width: 800px;
+  max-width: 700px;
+  height: 500px;
+  display: flex;
+  z-index: 9999;
+  padding: 10px;
 `;
 
 const StyledGeography = styled(Geography)`
@@ -73,7 +81,7 @@ const StyledGeography = styled(Geography)`
   cursor: pointer;
 `;
 
-function Election() {
+function ElectionMap() {
   const [selectedState, setSelectedState] = useState(null);
 
   // Create a geoPath generator to calculate centroids
@@ -153,4 +161,4 @@ function Election() {
   );
 }
 
-export default Election;
+export default ElectionMap;
