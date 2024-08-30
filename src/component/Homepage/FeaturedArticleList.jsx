@@ -112,8 +112,6 @@ const Hour = styled.span`
 function FeaturedArticleList() {
   const { articleList } = useContext(ArticleContext);
 
-  console.log("data:", articleList);
-
   return (
     <FeaturedArticleListContainer>
       <ArticleList>

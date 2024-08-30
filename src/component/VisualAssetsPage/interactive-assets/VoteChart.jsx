@@ -1,80 +1,141 @@
 import React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-const TitleContainer = styled.div``;
+// Styled components
+const VoteChartContainer = styled.div`
+  width: 100%;
+`;
+
+const TitleContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: 600;
+  color: gray;
+`;
 
 const InnerContainer = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
 `;
 
 const ChartContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
+  height: 55px;
   background-color: #ebebeb;
+  position: relative;
 `;
 
 const Bar = styled.div`
   height: 100%;
   background-color: ${(props) => props.color};
-`;
-
-const LeftBarChart = styled(Bar)`
-  width: ${(props) => props.votes}%;
-`;
-
-const RightBarChart = styled(Bar)`
-  width: ${(props) => props.votes}%;
-  margin-left: auto;
-`;
-
-const BidenContainer = styled.div`
-  width: 100%;
+  width: ${(props) => props.width}%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  position: absolute;
+  ${(props) => props.rightAlign && "right: 0;"}
 `;
 
-const TrumpContainer = styled.div`
+const Label = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  padding: ${(props) =>
+    props.candidate === "biden" ? "0 0 0 10px" : "0 10px 0 0"};
+  text-align: ${(props) => (props.candidate === "biden" ? "left" : "right")};
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  h2 {
-    width: fit-content;
-  }
 `;
 
 const Border = styled.div`
-  border-right: 2.5px solid gray;
+  border: 1px solid gray;
+  height: 70px;
+  margin-top: 28px;
 `;
 
-function VoteChart() {
-  const candidate1Votes = 98;
-  const candidate2Votes = 80;
+const CandidateContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const CandidateName = styled.p`
+  font-size: 40px;
+  font-weight: 600;
+  text-align: ${(props) => (props.candidate === "biden" ? "left" : "right")};
+  color: ${(props) => (props.candidate === "biden" ? "#3498db" : "#e74c3c")};
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+`;
+
+const ShortNumber = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${(props) => (props.candidate === "biden" ? "#3498db" : "#e74c3c")};
+  margin: 0;
+  padding: 10px 0 0;
+  text-align: ${(props) => (props.candidate === "biden" ? "left" : "right")};
+  width: 100%;
+`;
+
+function VoteChart({ data }) {
+  // Aggregate votes
+  const candidate1Votes = Object.values(data).reduce(
+    (total, state) => total + (state.Biden || 0),
+    0
+  );
+  const candidate2Votes = Object.values(data).reduce(
+    (total, state) => total + (state.Trump || 0),
+    0
+  );
+
+  // Define target number of electoral votes
+  const targetVotes = 270;
+
+  // Calculate percentages relative to the target votes
+  const candidate1Percentage = Math.min(
+    (candidate1Votes / targetVotes) * 100,
+    100
+  );
+  const candidate2Percentage = Math.min(
+    (candidate2Votes / targetVotes) * 100,
+    100
+  );
 
   return (
-    <TitleContainer>
+    <VoteChartContainer>
       <InnerContainer>
-        <BidenContainer>
-          <h2>BIDEN</h2>
+        <CandidateContainer>
+          <CandidateName candidate="biden">BIDEN</CandidateName>
           <ChartContainer>
-            <LeftBarChart votes={candidate1Votes} color="#3498db" />
-            <Border />
+            <Bar width={candidate1Percentage} color="#3498db">
+              <Label candidate="biden">{candidate1Votes}</Label>
+            </Bar>
           </ChartContainer>
-        </BidenContainer>
-        <TrumpContainer>
-          <h2>TRUMP</h2>
+          <ShortNumber candidate="biden">
+            BIDEN SHORT BY {Math.max(0, targetVotes - candidate1Votes)}
+          </ShortNumber>
+        </CandidateContainer>
+        <Border />
+        <CandidateContainer>
+          <CandidateName candidate="trump">TRUMP</CandidateName>
           <ChartContainer>
-            <RightBarChart votes={candidate2Votes} color="#e74c3c" />
+            <Bar width={candidate2Percentage} color="#e74c3c" rightAlign>
+              <Label candidate="trump">{candidate2Votes}</Label>
+            </Bar>
           </ChartContainer>
-        </TrumpContainer>
+          <ShortNumber candidate="trump">
+            TRUMP SHORT BY {Math.max(0, targetVotes - candidate2Votes)}
+          </ShortNumber>
+        </CandidateContainer>
       </InnerContainer>
-    </TitleContainer>
+      <TitleContainer>270 TO WIN</TitleContainer>
+    </VoteChartContainer>
   );
 }
 
